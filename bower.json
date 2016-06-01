@@ -1,0 +1,22 @@
+{
+  "name": "angular-router-demo",
+  "homepage": "https://github.com/SimonHerrera/angular-router-demo",
+  "authors": [
+    "Simon Herrera <simonherrera.tech@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/lib"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "angular-route": "^1.5.6"
+  }
+}

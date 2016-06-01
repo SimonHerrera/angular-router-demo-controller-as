@@ -1,0 +1,12 @@
+<h1>Todo List</h1>
+<ul>
+  <li
+    ng-repeat="(id, todo) in todos"
+    ng-class="{ completed : todo.completed }"
+    ng-click="toggleTodo(id)"
+  >
+      {{todo.name}}
+      <!-- ng-repeat="(id, todo) in todos" -->
+      <!-- {{id}}: {{todo.name}} -->
+  </li>
+</ul>
