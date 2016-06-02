@@ -1,36 +1,24 @@
 angular.module('app')
-  .controller('HelloCtrl', function ($scope, $location) {
-    $scope.hello = () => $location.path(`/hello/${$scope.name}`)
+  .controller('HelloCtrl', function ($location) {
+    const hello = this
+
+    hello.sayHello = () => $location.path(`/hello/${hello.name}`)
   })
-  .controller('HelloPersonCtrl', function ($scope, $routeParams) {
-    $scope.header = `Hello ${$routeParams.name}`
+  .controller('HelloPersonCtrl', function ($routeParams) {
+    const helloPerson = this
+
+    helloPerson.header = `Hello ${$routeParams.name}`
   })
+  .controller('TodoCtrl', function ($scope, todoFactory) {
+    const t = this
 
+    todoFactory.getTodos().then(todos => t.todos = todos)
 
-  .controller('TodoCtrl', function ($scope, $http) {
-    $http.get('https://angular-todo-c7434.firebaseio.com/todo.json')
-      .then(res => $scope.todos = res.data)
-
-    $scope.toggleTodo = (id) => {
+    t.toggleTodo = (id) => {
       // optimistic update
-      $scope.todos[id].completed = !$scope.todos[id].completed
+      t.todos[id].completed = !t.todos[id].completed
 
-      $http.patch(`https://angular-todo-c7434.firebaseio.com/todo/${id}.json`, {
-        completed: $scope.todos[id].completed
-      }).catch(res => $scope.todos[id].completed = !$scope.todos[id].completed)
-
-// this way waits for response, slower
-      // $http.patch(`https://angular-todo-c7434.firebaseio.com/todo/${id}.json`, {
-      //   completed: !$scope.todos[id].completed
-      // }).then(res => $scope.todos[id].completed = res.data.completed)
+      todoFactory.toggleTodo(id)
+        .catch(res => t.todos[id].completed = !t.todos[id].completed)
     }
   })
-
-  // .service('MyService', function () {
-  //   this.name = 'Scott'
-  // })
-
-//OR
-  .factory('myFactory', () => ({
-    name: 'Simon'
-  }))

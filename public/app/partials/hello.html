@@ -1,7 +1,7 @@
 <p>
-   Say hello to:
-  <form ng-submit="hello()">
-    <input ng-model="name">
+  {{ 'Say hello to:' | camelcase }}
+  <form ng-submit="hello.sayHello()">
+    <input ng-model="hello.name">
     <input type="submit">
   </form>
 </p>
