@@ -32,5 +32,5 @@ angular.module('app')
 
 //OR
   .factory('myFactory', () => ({
-    name: 'Scott'
+    name: 'Simon'
   }))
