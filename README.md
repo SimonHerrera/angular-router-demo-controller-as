@@ -1,1 +1,1 @@
-# angular-router-demo using Scope 6-1-2016
+# angular-router-demo using Controller As 6-1-2016
